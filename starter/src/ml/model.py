@@ -1,9 +1,7 @@
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
-
 from starter.src.ml.data import process_data
-
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -46,8 +44,6 @@ def train_model(X_train, y_train):
 
     # Return the best model
     return grid_search.best_estimator_
-
-
 
 def compute_model_metrics(y, preds):
     """
