@@ -1,0 +1,4 @@
+[core]
+    remote = s3census
+['remote "s3census"']
+    url = s3://udacitycensusdata/census_project

@@ -1,0 +1,54 @@
+﻿name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main  # Runs the workflow on pushes to the main branch
+  pull_request:
+    branches:
+      - main  # Runs the workflow on pull requests to the main branch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      # Step 2: Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.9.19  # Change this to match your development version
+      
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install dvc[s3] flake8 pytest
+      
+      # Step 4: Add AWS credentials
+      - name: Configure AWS credentials
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID && \
+          aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+      
+      # Step 5: Set up DVC and pull data
+      - name: Pull data with DVC
+        run: |
+          dvc pull
+      
+      # Step 6: Run flake8 for linting
+      - name: Run flake8
+        run: |
+          flake8 src/
+      
+      # Step 7: Run pytest for testing
+      - name: Run pytest
+        run: |
+          pytest
