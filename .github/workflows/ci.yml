@@ -3,7 +3,7 @@
 on:
   push:
     branches:
-      - main
+      - develop
   pull_request:
     branches:
       - main
@@ -61,7 +61,7 @@ jobs:
         run: |
           flake8 starter/src/ --max-line-length=120
       
-      # Step 8: Run pytest (ToDo: refine)
+      # Step 8: Run pytest
       - name: Run pytest
         env:
           PYTHONPATH: ${{ github.workspace }}  # Set the PYTHONPATH to the root directory
