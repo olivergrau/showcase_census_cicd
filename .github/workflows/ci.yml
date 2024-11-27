@@ -50,12 +50,14 @@ jobs:
         run: |
           dvc pull
       
-      # Step 7: Run flake8 (ToDo: refine)
+      # Step 7: Run flake8
       - name: Run flake8
         run: |
           flake8 starter/src/ --max-line-length=120
       
       # Step 8: Run pytest (ToDo: refine)
       - name: Run pytest
+        env:
+          PYTHONPATH: ${{ github.workspace }}  # Set the PYTHONPATH to the root directory
         run: |
           pytest starter/
