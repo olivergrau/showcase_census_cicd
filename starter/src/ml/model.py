@@ -1,7 +1,8 @@
-from sklearn.metrics import fbeta_score, precision_score, recall_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import GridSearchCV
 from starter.src.ml.data import process_data
+from sklearn.metrics import precision_score, recall_score, fbeta_score
+
 
 # Optional: implement hyperparameter tuning.
 def train_model(X_train, y_train):
@@ -45,6 +46,7 @@ def train_model(X_train, y_train):
     # Return the best model
     return grid_search.best_estimator_
 
+
 def compute_model_metrics(y, preds):
     """
     Validates the trained machine learning model using precision, recall, and F1.
@@ -86,8 +88,6 @@ def inference(model, X):
     preds = model.predict(X)
     return preds
 
-import pandas as pd
-from sklearn.metrics import precision_score, recall_score, fbeta_score
 
 def test_slices(data, model, encoder, lb, categorical_features, label_col):
     """
@@ -111,7 +111,7 @@ def test_slices(data, model, encoder, lb, categorical_features, label_col):
     Returns
     -------
     slice_metrics : dict
-        A dictionary where each key is a feature-value pair and each value is a tuple of precision, recall, and F1 score.
+        A dictionary where each key is a feature-value pair and each value is a tuple of precision, recall, and F1 score
     """
 
     slice_metrics = {}
@@ -150,4 +150,3 @@ def test_slices(data, model, encoder, lb, categorical_features, label_col):
             slice_metrics[f"{feature}={value}"] = (precision, recall, fbeta)
 
     return slice_metrics
-

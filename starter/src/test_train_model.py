@@ -5,6 +5,7 @@ import numpy as np
 from sklearn.metrics import precision_score, recall_score, fbeta_score
 from starter.src.ml.model import compute_model_metrics
 
+
 def test_process_data_training():
     """Test process_data when training=True."""
     # Sample input data
@@ -28,6 +29,7 @@ def test_process_data_training():
     assert encoder is not None
     assert lb is not None
 
+
 def test_process_data_inference_error():
     """Test process_data raises an error when training=False and no encoder/lb is given."""
     # Sample input data
@@ -45,6 +47,7 @@ def test_process_data_inference_error():
         process_data(
             data, categorical_features=categorical_features, label="salary", training=False
         )
+
 
 def test_compute_model_metrics():
     """Test compute_model_metrics function."""
@@ -65,6 +68,7 @@ def test_compute_model_metrics():
     assert recall == expected_recall, f"Expected {expected_recall}, got {recall}"
     assert f1 == expected_f1, f"Expected {expected_f1}, got {f1}"
 
+
 def test_compute_model_metrics_perfect_predictions():
     """Test compute_model_metrics with perfect predictions."""
     # Perfect predictions
@@ -83,6 +87,7 @@ def test_compute_model_metrics_perfect_predictions():
     assert precision == expected_precision, f"Expected {expected_precision}, got {precision}"
     assert recall == expected_recall, f"Expected {expected_recall}, got {recall}"
     assert f1 == expected_f1, f"Expected {expected_f1}, got {f1}"
+
 
 def test_compute_model_metrics_no_true_positives():
     """Test compute_model_metrics with no true positives."""
