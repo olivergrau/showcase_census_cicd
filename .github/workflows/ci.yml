@@ -50,12 +50,12 @@ jobs:
         run: |
           dvc pull
       
-      # Step 7: Run flake8
+      # Step 7: Run flake8 (ToDo: refine)
       - name: Run flake8
         run: |
           flake8 src/
       
-      # Step 8: Run pytest
+      # Step 8: Run pytest (ToDo: refine)
       - name: Run pytest
         run: |
           pytest
