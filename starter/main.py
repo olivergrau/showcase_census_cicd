@@ -6,9 +6,9 @@ from starter.src.ml.data import process_data
 from starter.src.ml.model import inference
 
 # Load pre-trained model and preprocessing objects
-MODEL_PATH = "./model/trained_model.pkl"
-ENCODER_PATH = "./model/encoder.pkl"
-LB_PATH = "./model/label_binarizer.pkl"
+MODEL_PATH = "./starter/model/trained_model.pkl"
+ENCODER_PATH = "./starter/model/encoder.pkl"
+LB_PATH = "./starter/model/label_binarizer.pkl"
 
 model = joblib.load(MODEL_PATH)
 encoder = joblib.load(ENCODER_PATH)
