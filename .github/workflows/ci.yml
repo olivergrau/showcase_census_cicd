@@ -49,6 +49,12 @@ jobs:
       - name: Pull data with DVC
         run: |
           dvc pull
+          
+      # Step 6.a: Check model directory contents
+      - name: List model directory
+        run: |
+          echo "Contents of model directory:"
+          ls -l starter/model/
       
       # Step 7: Run flake8
       - name: Run flake8
