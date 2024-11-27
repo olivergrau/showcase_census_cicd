@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v3
         with:
-          python-version: 3.9.19  # Change this to match your development version
+          python-version: 3.9  # Change this to match your development version
       
       # Step 3: Install dependencies
       - name: Install dependencies
